@@ -1,0 +1,25 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/font/Shojumaru-Regular.ttf",
+      "sha1": "fe79ec71a0efd6ad4f1dfdf4774f63ed8bcce8a5"
+    },
+    {
+      "path": "src/assets/font/Tinos-Bold.ttf",
+      "sha1": "64455f4b98381db03451edc117ae28192a1fd487"
+    },
+    {
+      "path": "src/assets/font/Tinos-BoldItalic.ttf",
+      "sha1": "38bce8d77a300d2bbeffce4ff2ae5d2fe6535b04"
+    },
+    {
+      "path": "src/assets/font/Tinos-Italic.ttf",
+      "sha1": "961efc832480502b86588fc1bb5627e42b02bea8"
+    },
+    {
+      "path": "src/assets/font/Tinos-Regular.ttf",
+      "sha1": "7986131e326593c805a13f9b0087fa52ae5f9c39"
+    }
+  ]
+}
