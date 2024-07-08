@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, ImageBackground} from 'react-native';
 import React from 'react';
 import Header from '../componetns/Header';
 import LinearGradient from 'react-native-linear-gradient';
@@ -12,11 +12,14 @@ import SimpleButton from '../componetns/SimpleButton';
 
 const AdminPage = ({navigation}) => {
   return (
-    <LinearGradient
-      style={{flex: 1, padding: hp(2)}}
-      colors={['#FCBACB', '#FFFFFF', '#42F9F9']}
-      end={{x: 0, y: 1}}
-      start={{x: 0, y: 0}}>
+    // <LinearGradient
+    //   style={{flex: 1, padding: hp(2)}}
+    //   colors={['#FCBACB', '#FFFFFF', '#42F9F9']}
+    //   end={{x: 0, y: 1}}
+    //   start={{x: 0, y: 0}}>
+    <ImageBackground
+      source={require('../assets/images/webg.jpg')}
+      style={styles.background}>
       <Header navigation={navigation} />
       <View style={{marginTop: hp(12)}}>
         <Text style={styles.pagesName}>Admin Page</Text>
@@ -41,7 +44,7 @@ const AdminPage = ({navigation}) => {
       <View style={{marginTop: hp(2)}}>
         <SimpleButton btnTitle="Upload" />
       </View>
-    </LinearGradient>
+    </ImageBackground>
   );
 };
 
@@ -50,8 +53,12 @@ export default AdminPage;
 const styles = StyleSheet.create({
   pagesName: {
     fontSize: FontSize.fs30,
-    marginBottom: hp(1),
     color: 'black',
     fontFamily: FontFamily.Shojumaru,
+  },
+  background: {
+    flex: 1,
+    resizeMode: 'cover',
+    padding: hp(2),
   },
 });

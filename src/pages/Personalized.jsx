@@ -5,6 +5,7 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
@@ -23,40 +24,45 @@ const Personalized = ({navigation}) => {
   //     navigation.navigate('AdminPage');
   //   };
   return (
-    <LinearGradient
-      style={{flex: 1, padding: hp(2)}}
-      colors={['#FCBACB', '#FFFFFF', '#42F9F9']}
-      end={{x: 0, y: 1}}
-      start={{x: 0, y: 0}}>
-      <Header navigation={navigation} />
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.pagesName}>Personalized Help</Text>
-        <Text style={styles.filedName}>Email</Text>
-        <CInput
-          title="email-address"
-          //   secureTextEntry={true}
-          fieldsName="Enter Your Email"
-          icon={Images.Lock}
-        />
-        <Text style={styles.filedName}>Mobile Number</Text>
-        <CInput
-          //   secureTextEntry={true}
-          fieldsName="Enter Your Mobile Number"
-          icon={Images.Calls}
-          keyboardType="numeric"
-        />
-        <Text style={styles.filedName}>Description (1-500 words)</Text>
-        <TextInput
-          style={styles.textInput}
-          multiline={true}
-          placeholder="Type here..."
-        />
-        <SimpleButton
-          btnTitle="Submit"
-          onPress={() => navigation.navigate('AdminPage')}
-        />
-      </SafeAreaView>
-    </LinearGradient>
+    // <LinearGradient
+    //   style={{flex: 1, padding: hp(2)}}
+    //   colors={['#FCBACB', '#FFFFFF', '#42F9F9']}
+    //   end={{x: 0, y: 1}}
+    //   start={{x: 0, y: 0}}>
+    <>
+      <ImageBackground
+        source={require('../assets/images/webg.jpg')}
+        style={styles.background}>
+        <Header navigation={navigation} />
+        <SafeAreaView style={styles.container}>
+          <Text style={styles.pagesName}>Personalized Help</Text>
+          <Text style={styles.filedName}>Email</Text>
+          <CInput
+            title="email-address"
+            fieldsName="Enter Your Email"
+            icon={Images.Lock}
+            textContentType="emailAddress"
+          />
+          <Text style={styles.filedName}>Mobile Number</Text>
+          <CInput
+            fieldsName="Enter Your Mobile Number"
+            icon={Images.Calls}
+            keyboardType="numeric"
+          />
+          <Text style={styles.filedName}>Description (1-500 words)</Text>
+          <TextInput
+            style={styles.textInput}
+            multiline={true}
+            placeholder="Type here..."
+          />
+          <SimpleButton
+            btnTitle="Submit"
+            onPress={() => navigation.navigate('AdminPage')}
+          />
+        </SafeAreaView>
+      </ImageBackground>
+    </>
+    // </LinearGradient>
   );
 };
 
@@ -72,6 +78,11 @@ const styles = StyleSheet.create({
     marginBottom: hp(1),
     color: 'black',
     fontFamily: FontFamily.Shojumaru,
+  },
+  background: {
+    flex: 1,
+    resizeMode: 'cover',
+    padding: hp(2),
   },
   filedName: {
     color: 'black',

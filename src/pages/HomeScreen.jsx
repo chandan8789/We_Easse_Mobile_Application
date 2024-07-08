@@ -1,11 +1,15 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 
 const HomeScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>HomeScreen</Text>
-    </View>
+    <ImageBackground
+      source={require('../assets/images/webg.jpg')}
+      style={styles.background}>
+      <View style={styles.container}>
+        <Text style={styles.text}>HomeScreen</Text>
+      </View>
+    </ImageBackground>
   );
 };
 
@@ -14,7 +18,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'pink',
+  },
+  background: {
+    flex: 1,
+    resizeMode: 'cover', // or 'stretch' or 'contain'
+    justifyContent: 'center',
   },
   text: {
     color: 'black',

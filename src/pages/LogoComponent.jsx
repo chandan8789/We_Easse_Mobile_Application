@@ -1,51 +1,44 @@
 import React, {useState, useEffect} from 'react';
-import {View, Animated, StyleSheet, Image} from 'react-native';
+import {
+  View,
+  Animated,
+  StyleSheet,
+  Image,
+  ImageBackground,
+  Text,
+} from 'react-native';
+import {hp, wp} from '../assets/commonCSS/GlobalCss';
+import CustomLoader from '../componetns/CustomLoader';
+import FontSize from '../assets/commonCSS/FontSize';
 
 const LogoComponent = ({navigation}) => {
-  const [rotation] = useState(new Animated.Value(0));
-  const [zoom] = useState(new Animated.Value(1));
-
-  useEffect(() => {
-    Animated.sequence([
-      Animated.timing(rotation, {
-        toValue: 360,
-        duration: 2000,
-        useNativeDriver: true,
-      }),
-      Animated.timing(zoom, {
-        toValue: 2,
-        duration: 1000,
-        useNativeDriver: true,
-      }),
-    ]).start();
-
-    setTimeout(() => {
-      navigation.navigate('SignUp');
-    }, 3000);
-  }, []);
-
+  setTimeout(() => {
+    navigation.navigate('SignUp');
+  }, 2000);
   return (
-    <View style={styles.container}>
-      <Animated.Image
-        source={require('../assets/images/playstore-icon.png')}
-        style={[
-          styles.logo,
-          {
-            transform: [
-              {
-                rotate: rotation.interpolate({
-                  inputRange: [0, 360],
-                  outputRange: ['0deg', '360deg'],
-                }),
-              },
-              {
-                scale: zoom,
-              },
-            ],
-          },
-        ]}
-      />
-    </View>
+    <>
+      <ImageBackground
+        source={require('../assets/images/webg.jpg')}
+        style={styles.background}>
+        <View style={styles.container}>
+          <Image
+            style={{height: hp(25), width: wp(25), resizeMode: 'contain'}}
+            source={require('../assets/images/playstore-icon.png')}
+          />
+          <Text
+            style={{
+              color: 'green',
+              fontSize: FontSize.fs18,
+              fontWeight: '700',
+            }}>
+            Believe.. Achieve.. Lead..
+          </Text>
+        </View>
+        <View style={{marginBottom: hp(5)}}>
+          <CustomLoader />
+        </View>
+      </ImageBackground>
+    </>
   );
 };
 
@@ -55,10 +48,26 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  background: {
+    flex: 1,
+    resizeMode: 'cover', // or 'stretch' or 'contain'
+    justifyContent: 'center',
+  },
   logo: {
     width: 100,
     height: 100,
-    borderRadius: 50,
+  },
+  customLoader: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  dot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    marginHorizontal: 5,
+    marginTop: 10,
   },
 });
 

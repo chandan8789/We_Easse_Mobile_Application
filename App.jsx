@@ -17,12 +17,12 @@ const AppNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="LogoComponet" component={LogoComponent} />
-      <Stack.Screen name="SignUp" component={SignIn} />
+      {/* <Stack.Screen name="SignUp" component={SignIn} />
       <Stack.Screen name="Header" component={Header} />
       <Stack.Screen name="Personalized-Help" component={Personalized} />
       <Stack.Screen name="AdminPage" component={AdminPage} />
       <Stack.Screen name="Home-Page" component={HomeScreen} />
-      <Stack.Screen name="HomeOne" component={MyDrawer} />
+      <Stack.Screen name="HomeOne" component={MyDrawer} /> */}
     </Stack.Navigator>
   );
 };

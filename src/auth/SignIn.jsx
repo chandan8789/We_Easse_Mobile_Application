@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  ImageBackground,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Images from '../assets/images';
 import {hp} from '../assets/commonCSS/GlobalCss';
@@ -13,11 +20,14 @@ const SignIn = ({navigation}) => {
   const [isSignUp, setIsSignUp] = useState(false);
 
   return (
-    <LinearGradient
-      style={{flex: 1, padding: hp(3)}}
-      colors={['#FCBACB', '#FFFFFF', '#42F9F9']}
-      end={{x: 0, y: 1}}
-      start={{x: 0, y: 0}}>
+    // <LinearGradient
+    //   style={{flex: 1, padding: hp(3)}}
+    //   colors={['#FCBACB', '#FFFFFF', '#42F9F9']}
+    //   end={{x: 0, y: 1}}
+    //   start={{x: 0, y: 0}}>
+    <ImageBackground
+      source={require('../assets/images/webg.jpg')}
+      style={styles.background}>
       <View style={styles.container}>
         <Text style={styles.pagesName}>{isSignUp ? 'SIGN UP' : 'SIGN IN'}</Text>
         <Text style={styles.filedName}>Email</Text>
@@ -91,7 +101,8 @@ const SignIn = ({navigation}) => {
           )}
         </View>
       </View>
-    </LinearGradient>
+    </ImageBackground>
+    // </LinearGradient>
   );
 };
 
@@ -99,8 +110,13 @@ export default SignIn;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     padding: hp(2),
+    justifyContent: 'center',
+  },
+  background: {
+    flex: 1,
+    resizeMode: 'cover',
     justifyContent: 'center',
   },
   pagesName: {
