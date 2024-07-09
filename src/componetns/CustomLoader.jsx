@@ -1,93 +1,154 @@
-import React, {useRef, useEffect} from 'react';
-import {View, Animated, StyleSheet} from 'react-native';
+// components/CustomLoader.js
+import React, {useEffect} from 'react';
+import {View, StyleSheet, Animated} from 'react-native';
+import {hp, wp} from '../assets/commonCSS/GlobalCss';
 
 const CustomLoader = () => {
-  const dot1Opacity = useRef(new Animated.Value(0)).current;
-  const dot2Opacity = useRef(new Animated.Value(0)).current;
-  const dot3Opacity = useRef(new Animated.Value(0)).current;
-  const dot4Opacity = useRef(new Animated.Value(0)).current;
+  const dot1 = new Animated.Value(0);
+  const dot2 = new Animated.Value(0);
+  const dot3 = new Animated.Value(0);
+  const dot4 = new Animated.Value(0);
 
-  const animate = () => {
-    Animated.sequence([
-      Animated.timing(dot1Opacity, {
-        toValue: 1,
-        duration: 500,
-        useNativeDriver: true,
-      }),
-      Animated.timing(dot2Opacity, {
-        toValue: 1,
-        duration: 500,
-        useNativeDriver: true,
-      }),
-      Animated.timing(dot3Opacity, {
-        toValue: 1,
-        duration: 500,
-        useNativeDriver: true,
-      }),
-      Animated.timing(dot4Opacity, {
-        toValue: 1,
-        duration: 500,
-        useNativeDriver: true,
-      }),
-      Animated.timing(dot1Opacity, {
-        toValue: 0,
-        duration: 500,
-        useNativeDriver: true,
-      }),
-      Animated.timing(dot2Opacity, {
-        toValue: 0,
-        duration: 500,
-        useNativeDriver: true,
-      }),
-      Animated.timing(dot3Opacity, {
-        toValue: 0,
-        duration: 500,
-        useNativeDriver: true,
-      }),
-      Animated.timing(dot4Opacity, {
-        toValue: 0,
-        duration: 500,
-        useNativeDriver: true,
-      }),
-    ]).start(() => {
-      // Restart the animation loop
-      animate();
-    });
-  };
+  const dot5 = new Animated.Value(0);
+  const dot6 = new Animated.Value(0);
+  const dot7 = new Animated.Value(0);
+  const dot8 = new Animated.Value(0);
 
   useEffect(() => {
-    animate(); // Start the animation loop
+    const animateDots = () => {
+      Animated.loop(
+        Animated.sequence([
+          Animated.timing(dot1, {
+            toValue: 1,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.timing(dot2, {
+            toValue: 1,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.timing(dot3, {
+            toValue: 1,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.timing(dot4, {
+            toValue: 1,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.timing(dot1, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.timing(dot2, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.timing(dot3, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.timing(dot4, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+        ]),
+      ).start();
+    };
+
+    const animateDots2 = () => {
+      Animated.loop(
+        Animated.sequence([
+          Animated.timing(dot5, {
+            toValue: 1,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.timing(dot6, {
+            toValue: 1,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.timing(dot7, {
+            toValue: 1,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.timing(dot8, {
+            toValue: 1,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.timing(dot5, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.timing(dot6, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.timing(dot7, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.timing(dot8, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+        ]),
+      ).start();
+    };
+
+    animateDots();
+    animateDots2();
   }, []);
 
+  const dotStyle = dot => ({
+    opacity: dot.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0.3, 1],
+    }),
+  });
+
   return (
-    <View style={styles.customLoader}>
-      <Animated.View
-        style={[styles.dot, {backgroundColor: '#FF5733', opacity: dot1Opacity}]}
-      />
-      <Animated.View
-        style={[styles.dot, {backgroundColor: '#C70039', opacity: dot2Opacity}]}
-      />
-      <Animated.View
-        style={[styles.dot, {backgroundColor: '#FF5733', opacity: dot3Opacity}]}
-      />
-      <Animated.View
-        style={[styles.dot, {backgroundColor: '#C70039', opacity: dot4Opacity}]}
-      />
+    <View style={styles.mainContainer}>
+      <View style={styles.container}>
+        <Animated.View style={[styles.dot, dotStyle(dot1)]} />
+        <Animated.View style={[styles.dot, dotStyle(dot2)]} />
+        <Animated.View style={[styles.dot, dotStyle(dot3)]} />
+        <Animated.View style={[styles.dot, dotStyle(dot4)]} />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  customLoader: {
-    flexDirection: 'row',
+  mainContainer: {
     justifyContent: 'center',
     alignItems: 'center',
   },
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    // marginTop: hp(1),
+  },
   dot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    marginHorizontal: 5,
+    width: wp(20),
+    height: hp(2),
+    borderRadius: 1,
+    backgroundColor: 'green',
+    marginHorizontal: hp(0.5),
   },
 });
 

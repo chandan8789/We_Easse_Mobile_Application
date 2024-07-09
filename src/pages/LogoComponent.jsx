@@ -14,7 +14,7 @@ import FontSize from '../assets/commonCSS/FontSize';
 const LogoComponent = ({navigation}) => {
   setTimeout(() => {
     navigation.navigate('SignUp');
-  }, 2000);
+  }, 3000);
   return (
     <>
       <ImageBackground

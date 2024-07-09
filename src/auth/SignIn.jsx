@@ -111,13 +111,14 @@ export default SignIn;
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    padding: hp(2),
+    // padding: hp(2),
     justifyContent: 'center',
   },
   background: {
     flex: 1,
     resizeMode: 'cover',
     justifyContent: 'center',
+    padding: hp(2),
   },
   pagesName: {
     fontSize: FontSize.fs30,
