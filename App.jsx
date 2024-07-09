@@ -10,17 +10,20 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import Header from './src/componetns/Header';
 import MyDrawer from './src/pages/MyDrawer';
 import LogoComponent from './src/pages/LogoComponent';
+import ResetPassword from './src/pages/ResetPassword';
 
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      {/* <Stack.Screen name="LogoComponet" component={LogoComponent} />
+      <Stack.Screen name="LogoComponet" component={LogoComponent} />
       <Stack.Screen name="SignUp" component={SignIn} />
+      <Stack.Screen name="Reset-Password" component={ResetPassword} />
       <Stack.Screen name="Header" component={Header} />
-      <Stack.Screen name="Personalized-Help" component={Personalized} />
-      <Stack.Screen name="AdminPage" component={AdminPage} /> */}
+
+      {/* <Stack.Screen name="Personalized-Help" component={Personalized} /> */}
+      <Stack.Screen name="AdminPage" component={AdminPage} />
       <Stack.Screen name="Home-Page" component={HomeScreen} />
       <Stack.Screen name="HomeOne" component={MyDrawer} />
     </Stack.Navigator>

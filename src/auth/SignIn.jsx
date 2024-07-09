@@ -93,9 +93,9 @@ const SignIn = ({navigation}) => {
           </View>
           {!isSignUp && (
             <TouchableOpacity
-              onPress={() => navigation.navigate('Personalized-Help')}>
+              onPress={() => navigation.navigate('Reset-Password')}>
               <Text style={[styles.bottomLinkText, {marginTop: 10}]}>
-                Reset Password
+                Forgot Password?
               </Text>
             </TouchableOpacity>
           )}
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   },
   bottomTextContainer: {
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: hp(5),
   },
   textRow: {
     flexDirection: 'row',

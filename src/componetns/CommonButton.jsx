@@ -5,9 +5,7 @@ import {FontFamily} from '../assets/commonCSS/FontFamily';
 
 const CommonButton = ({buttontitle, onPress, backgroundColor}) => {
   return (
-    <TouchableOpacity
-      style={[styles.button, {backgroundColor: backgroundColor}]}
-      onPress={onPress}>
+    <TouchableOpacity style={[styles.button]} onPress={onPress}>
       <Text style={styles.buttonText}>{buttontitle}</Text>
     </TouchableOpacity>
   );
@@ -15,10 +13,10 @@ const CommonButton = ({buttontitle, onPress, backgroundColor}) => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#FFF',
+    // backgroundColor: '#FFF',
     paddingVertical: hp(1.5),
     paddingHorizontal: hp(3),
-    width: '80%',
+    width: '60%',
     borderRadius: hp(2),
     alignItems: 'center',
     marginTop: hp(5),
@@ -27,6 +25,7 @@ const styles = StyleSheet.create({
       'gradient(90deg, rgba(199, 90, 195, 0.37) 0%, rgba(224, 48, 209, 0.7039) 53%, rgba(228, 41, 212, 0.7606) 62%, #F50BDE 100%)',
     elevation: 5,
     alignSelf: 'center',
+    backgroundColor: 'white',
   },
   buttonText: {
     fontFamily: FontFamily.Shojumaru,

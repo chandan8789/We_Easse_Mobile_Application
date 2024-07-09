@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   ImageBackground,
+  Image,
 } from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
@@ -19,7 +20,7 @@ import {FontFamily} from '../assets/commonCSS/FontFamily';
 import CommonButton from '../componetns/CommonButton';
 import SimpleButton from '../componetns/SimpleButton';
 
-const Personalized = ({navigation}) => {
+const ResetPassword = ({navigation}) => {
   return (
     // <LinearGradient
     //   style={{flex: 1, padding: hp(2)}}
@@ -32,29 +33,44 @@ const Personalized = ({navigation}) => {
         style={styles.background}>
         <Header navigation={navigation} />
         <SafeAreaView style={styles.container}>
-          <Text style={styles.pagesName}>Personalized Help</Text>
+          <Text
+            style={{
+              fontSize: FontSize.fs22,
+              color: 'black',
+              fontWeight: '700',
+            }}>
+            Forgot Password!
+          </Text>
           <Text style={styles.filedName}>Email</Text>
           <CInput
             title="email-address"
             fieldsName="Enter Your Email"
-            icon={Images.Lock}
+            icon={Images.Mails}
             textContentType="emailAddress"
           />
-          <Text style={styles.filedName}>Mobile Number</Text>
-          <CInput
-            fieldsName="Enter Your Mobile Number"
-            icon={Images.Calls}
-            keyboardType="numeric"
-          />
-          <Text style={styles.filedName}>Description (1-500 words)</Text>
-          <TextInput
-            style={styles.textInput}
-            multiline={true}
-            placeholder="Type here..."
-          />
-          <SimpleButton
+          <Text style={styles.filedName}>Old Password</Text>
+          <CInput fieldsName="Enter Your Old Password" icon={Images.Lock} />
+
+          <Text style={styles.filedName}>New Password</Text>
+          <CInput fieldsName="Enter Your New Password" icon={Images.Lock} />
+
+          {/* <Text style={styles.filedName}>Mobile Number</Text>
+          <View style={styles.inputContainer}>
+            <Image source={Images.Calls} style={styles.icon} />
+            <TextInput
+              style={styles.textInput}
+              placeholder="Enter Your Mobile Number"
+              placeholderTextColor="grey"
+              keyboardType="numeric"
+            />
+          </View> */}
+          {/* <SimpleButton
             btnTitle="Submit"
-            onPress={() => navigation.navigate('AdminPage')}
+            onPress={() => navigation.navigate('SignUp')}
+          /> */}
+          <CommonButton
+            buttontitle="Submit"
+            onPress={() => navigation.navigate('SignUp')}
           />
         </SafeAreaView>
       </ImageBackground>
@@ -63,12 +79,12 @@ const Personalized = ({navigation}) => {
   );
 };
 
-export default Personalized;
+export default ResetPassword;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: hp(5),
+    justifyContent: 'center',
   },
   pagesName: {
     fontSize: FontSize.fs30,
@@ -99,5 +115,25 @@ const styles = StyleSheet.create({
     fontSize: FontSize.fs17,
     backgroundColor: 'white',
     color: 'black',
+  },
+
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: hp(0.2),
+    borderRadius: hp(1.5),
+    elevation: 4,
+    backgroundColor: 'white',
+    paddingLeft: hp(1),
+  },
+  icon: {
+    width: hp(2.5),
+    height: hp(2.5),
+    objectFit: 'contain',
+  },
+  textInput: {
+    flex: 1,
+    height: hp(6),
+    paddingLeft: hp(3),
   },
 });
