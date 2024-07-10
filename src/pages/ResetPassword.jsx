@@ -22,11 +22,6 @@ import SimpleButton from '../componetns/SimpleButton';
 
 const ResetPassword = ({navigation}) => {
   return (
-    // <LinearGradient
-    //   style={{flex: 1, padding: hp(2)}}
-    //   colors={['#FCBACB', '#FFFFFF', '#42F9F9']}
-    //   end={{x: 0, y: 1}}
-    //   start={{x: 0, y: 0}}>
     <>
       <ImageBackground
         source={require('../assets/images/webg.jpg')}
@@ -75,7 +70,6 @@ const ResetPassword = ({navigation}) => {
         </SafeAreaView>
       </ImageBackground>
     </>
-    // </LinearGradient>
   );
 };
 
