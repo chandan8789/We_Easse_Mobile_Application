@@ -2,19 +2,18 @@ import {Image, StyleSheet, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Images from '../assets/images';
 import {hp} from '../assets/commonCSS/GlobalCss';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const Header = ({navigation}) => {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.headerContent}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Image
-            source={Images.leftside}
-            style={styles.icon}
-            resizeMode="contain"
-          />
+          <AntDesign name="arrowleft" size={30} color="black" />
         </TouchableOpacity>
-        <Image source={Images.Home} style={styles.icon} resizeMode="contain" />
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <AntDesign name="home" size={30} color="black" />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -30,6 +29,7 @@ const styles = StyleSheet.create({
   headerContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingHorizontal: hp(1),
   },
   icon: {
     height: hp(3),

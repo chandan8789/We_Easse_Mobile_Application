@@ -1,14 +1,15 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {hp, wp} from '../assets/commonCSS/GlobalCss';
+import HeaderHomeScreen from './HeaderHomeScreen';
 
 const Cards = ({content, notification, more, date}) => {
   return (
     <View style={styles.container}>
       <View style={styles.main}>
-        <View style={styles.dateContainer}>
+        {/* <View style={styles.dateContainer}>
           <Text style={styles.dateText}>{date}</Text>
-        </View>
+        </View> */}
         <Text style={{color: 'black', fontWeight: '700', marginTop: hp(1)}}>
           {content}
         </Text>
