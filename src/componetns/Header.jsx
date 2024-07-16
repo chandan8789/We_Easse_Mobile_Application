@@ -24,7 +24,7 @@ export default Header;
 const styles = StyleSheet.create({
   headerContainer: {
     // paddingHorizontal: hp(2),
-    // paddingVertical: hp(2),
+    paddingVertical: hp(2),
   },
   headerContent: {
     flexDirection: 'row',

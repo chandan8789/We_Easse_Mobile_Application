@@ -1,9 +1,16 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {hp, wp} from '../assets/commonCSS/GlobalCss';
 import HeaderHomeScreen from './HeaderHomeScreen';
 
 const Cards = ({content, notification, more, date}) => {
+  // const [data, setData] = useState({
+  //   name: 'name',
+  //   email: 'email',
+  //   phone: 'phone',
+  // });
+
+  // setData({...data, name:"name"})
   return (
     <View style={styles.container}>
       <View style={styles.main}>

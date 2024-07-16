@@ -29,6 +29,9 @@ import AboutUs from './AboutUs';
 import ContactUs from './ContactUs';
 import Subscription from './Subscription';
 import Rates from './Rates';
+import {TextInput} from 'react-native-gesture-handler';
+import CategoryCards from './CategroyCards';
+import ResetPassword from './ResetPassword';
 
 const Drawer = createDrawerNavigator();
 
@@ -60,7 +63,7 @@ const HomeScreen = ({navigation}) => {
       drawerContent={props => <CustomDrawerContent {...props} />}>
       <Drawer.Screen name="Home" component={HomeContent} />
       <Drawer.Screen name="Sub-Category" component={Announcements} />
-      <Drawer.Screen name="Change Password" component={ChangePassword} />
+      <Drawer.Screen name="Change Password" component={ResetPassword} />
       <Drawer.Screen
         name="Feedback/Suggestion"
         component={FeedbackSuggestion}
@@ -77,52 +80,43 @@ const HomeContent = () => {
   const navigation = useNavigation();
 
   return (
-    <ScrollView>
-      <ImageBackground
-        source={require('../assets/images/webg.jpg')}
-        style={styles.background}>
-        <View style={styles.container}>
-          <View style={styles.header}>
-            <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-              <FontAwesome name="user-circle" size={30} color="black" />
+    <ImageBackground
+      source={require('../assets/images/webg.jpg')}
+      style={styles.background}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+            <FontAwesome name="user-circle" size={30} color="black" />
+          </TouchableOpacity>
+
+          <View style={styles.helpContainer}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Personalized-Help')}>
+              <Ionicons name="help-circle-outline" size={30} color="black" />
             </TouchableOpacity>
 
-            <View style={styles.helpContainer}>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('Personalized-Help')}>
-                <Ionicons name="help-circle-outline" size={30} color="black" />
-              </TouchableOpacity>
-
-              <TouchableOpacity>
-                <MaterialIcons
-                  name="notifications-none"
-                  size={30}
-                  color="black"
-                />
-              </TouchableOpacity>
-            </View>
+            <TouchableOpacity>
+              <MaterialIcons
+                name="notifications-none"
+                size={30}
+                color="black"
+              />
+            </TouchableOpacity>
           </View>
+        </View>
 
+        <ScrollView showsVerticalScrollIndicator={false}>
           <UserDetails
             great="Good Afternoon"
             name="John Doe"
             email="johndoe@gmail.com"
           />
           <View>
-            <Text style={styles.categoryTitle}>Category 1</Text>
             <Categorys />
           </View>
-          <View style={{marginTop: hp(2)}}>
-            <Text style={styles.categoryTitle}>Category 2</Text>
-            <Categorys />
-          </View>
-          <View style={{marginTop: hp(2), marginBottom: hp(2)}}>
-            <Text style={styles.categoryTitle}>Category 3</Text>
-            <Categorys />
-          </View>
-        </View>
-      </ImageBackground>
-    </ScrollView>
+        </ScrollView>
+      </View>
+    </ImageBackground>
   );
 };
 
@@ -137,11 +131,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: hp(2),
+    paddingVertical: hp(2),
   },
   background: {
     flex: 1,
     resizeMode: 'cover',
-    padding: hp(2),
   },
   categoryTitle: {
     color: 'black',

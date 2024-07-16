@@ -11,7 +11,6 @@ import Header from './src/componetns/Header';
 import MyDrawer from './src/pages/MyDrawer';
 import LogoComponent from './src/pages/LogoComponent';
 import ResetPassword from './src/pages/ResetPassword';
-import Announcements from './src/pages/Announcements';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +19,6 @@ const AppNavigator = () => {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="LogoComponet" component={LogoComponent} />
       <Stack.Screen name="SignUp" component={SignIn} />
-      <Stack.Screen name="Reset-Password" component={ResetPassword} />
       <Stack.Screen name="Header" component={Header} />
 
       <Stack.Screen name="Personalized-Help" component={Personalized} />

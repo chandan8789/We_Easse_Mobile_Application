@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
 
   textInput: {
     height: hp(35),
-    borderColor: 'gray',
+    borderColor: 'grey',
     borderWidth: 1,
     padding: hp(1.5),
     textAlignVertical: 'top',
