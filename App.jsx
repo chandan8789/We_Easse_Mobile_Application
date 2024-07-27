@@ -10,7 +10,6 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import Header from './src/componetns/Header';
 import MyDrawer from './src/pages/MyDrawer';
 import LogoComponent from './src/pages/LogoComponent';
-import ResetPassword from './src/pages/ResetPassword';
 
 const Stack = createNativeStackNavigator();
 

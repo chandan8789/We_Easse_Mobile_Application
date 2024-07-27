@@ -1,10 +1,32 @@
-import {StyleSheet, View, Text, Image, ScrollView} from 'react-native';
-import React from 'react';
+// import {StyleSheet, View, Text, Image, ScrollView, Button} from 'react-native';
+import {
+  View,
+  Image,
+  TouchableOpacity,
+  Modal,
+  StyleSheet,
+  Text,
+  Dimensions,
+  Button,
+} from 'react-native';
+
+import React, {useState} from 'react';
 import CategoryCards from '../pages/CategroyCards'; // Corrected typo
 import FontSize from '../assets/commonCSS/FontSize';
 import {hp, wp} from '../assets/commonCSS/GlobalCss';
+const {width, height} = Dimensions.get('window');
 
-const DataHere = () => {
+const DataHere = ({navigation}) => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handleImagePress = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalVisible(false);
+  };
+
   return (
     <>
       <View>
@@ -17,19 +39,33 @@ const DataHere = () => {
             paddingLeft: hp(2),
             flexDirection: 'row',
           }}>
-          <Text style={{padding: hp(1), color: 'black'}}>UF</Text>
-          <Text style={{padding: hp(1), color: 'black'}}>Data</Text>
-          <Image
-            source={{
-              uri: 'https://images.unsplash.com/photo-1721023672487-906b07479bff?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzfHx8ZW58MHx8fHx8',
-            }}
-            style={{
-              width: wp(20),
-              height: hp(10),
-              marginLeft: hp(2),
-              padding: hp(2),
-            }}
-          />
+          <TouchableOpacity onPress={handleImagePress}>
+            <Image
+              source={{
+                uri: 'https://buffer.com/cdn-cgi/image/w=1000,fit=contain,q=90,f=auto/library/content/images/size/w600/2023/10/free-images.jpg',
+              }}
+              style={styles.thumbnail}
+            />
+          </TouchableOpacity>
+
+          <Modal
+            visible={isModalVisible}
+            transparent={true}
+            animationType="slide"
+            onRequestClose={handleModalClose}>
+            <View style={styles.modalContainer}>
+              <TouchableOpacity
+                style={styles.closeButton}
+                onPress={handleModalClose}>
+                <Image
+                  source={{
+                    uri: 'https://buffer.com/cdn-cgi/image/w=1000,fit=contain,q=90,f=auto/library/content/images/size/w600/2023/10/free-images.jpg',
+                  }}
+                  style={styles.fullScreenImage}
+                />
+              </TouchableOpacity>
+            </View>
+          </Modal>
         </View>
       </View>
     </>
@@ -122,4 +158,27 @@ const Categorys = () => {
 
 export default Categorys;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  thumbnail: {
+    height: hp(15),
+    width: wp(25),
+    padding: '2%',
+    marginTop: hp(2),
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+  },
+  fullScreenImage: {
+    width: width,
+    height: height,
+    resizeMode: 'contain',
+  },
+  closeButton: {
+    position: 'absolute',
+    top: 20,
+    zIndex: 1,
+  },
+});
