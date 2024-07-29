@@ -10,6 +10,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import Header from './src/componetns/Header';
 import MyDrawer from './src/pages/MyDrawer';
 import LogoComponent from './src/pages/LogoComponent';
+import PDFScreen from './src/pages/PDFScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,7 @@ const AppNavigator = () => {
       <Stack.Screen name="AdminPage" component={AdminPage} />
       <Stack.Screen name="HomeOne" component={MyDrawer} />
       <Stack.Screen name="Dashboard" component={HomeScreen} />
+      <Stack.Screen name="PDF" component={PDFScreen} />
     </Stack.Navigator>
   );
 };

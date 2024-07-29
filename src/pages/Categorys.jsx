@@ -14,9 +14,11 @@ import React, {useState} from 'react';
 import CategoryCards from '../pages/CategroyCards'; // Corrected typo
 import FontSize from '../assets/commonCSS/FontSize';
 import {hp, wp} from '../assets/commonCSS/GlobalCss';
+import {useNavigation} from '@react-navigation/native';
 const {width, height} = Dimensions.get('window');
 
-const DataHere = ({navigation}) => {
+const DataHere = () => {
+  const navigation = useNavigation();
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleImagePress = () => {
@@ -31,14 +33,16 @@ const DataHere = ({navigation}) => {
     <>
       <View>
         <View
-          style={{
-            borderWidth: hp(0.1),
-            height: hp(20),
-            marginTop: hp(3),
-            elevation: 1,
-            paddingLeft: hp(2),
-            flexDirection: 'row',
-          }}>
+          style={
+            {
+              // borderWidth: hp(0.1),
+              // height: hp(20),
+              // marginTop: hp(3),
+              // elevation: 1,
+              // paddingLeft: hp(2),
+              // flexDirection: 'row',
+            }
+          }>
           <TouchableOpacity onPress={handleImagePress}>
             <Image
               source={{
@@ -47,7 +51,6 @@ const DataHere = ({navigation}) => {
               style={styles.thumbnail}
             />
           </TouchableOpacity>
-
           <Modal
             visible={isModalVisible}
             transparent={true}
@@ -66,6 +69,17 @@ const DataHere = ({navigation}) => {
               </TouchableOpacity>
             </View>
           </Modal>
+
+          <View>
+            <Button
+              title="Open PDF"
+              onPress={() =>
+                navigation.navigate('PDF', {
+                  uri: 'https://gurugramuniversity.ac.in/Notice/Document%20Fri_Jul_26_16_42_39.pdf',
+                })
+              }
+            />
+          </View>
         </View>
       </View>
     </>
