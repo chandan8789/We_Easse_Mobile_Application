@@ -8,6 +8,7 @@ import {
   Text,
   Dimensions,
   Button,
+  Linking,
 } from 'react-native';
 
 import React, {useState} from 'react';
@@ -33,16 +34,14 @@ const DataHere = () => {
     <>
       <View>
         <View
-          style={
-            {
-              // borderWidth: hp(0.1),
-              // height: hp(20),
-              // marginTop: hp(3),
-              // elevation: 1,
-              // paddingLeft: hp(2),
-              // flexDirection: 'row',
-            }
-          }>
+          style={{
+            borderWidth: hp(0.1),
+            height: hp(20),
+            marginTop: hp(3),
+            elevation: 1,
+            paddingLeft: hp(2),
+            flexDirection: 'row',
+          }}>
           <TouchableOpacity onPress={handleImagePress}>
             <Image
               source={{
@@ -71,14 +70,30 @@ const DataHere = () => {
           </Modal>
 
           <View>
-            <Button
+            {/* <Button
               title="Open PDF"
               onPress={() =>
                 navigation.navigate('PDF', {
                   uri: 'https://gurugramuniversity.ac.in/Notice/Document%20Fri_Jul_26_16_42_39.pdf',
                 })
               }
-            />
+            /> */}
+
+            <View
+              style={{
+                justifyContent: 'center',
+                marginTop: hp(8),
+                marginLeft: hp(5),
+              }}>
+              <Button
+                title="Open PDF"
+                onPress={() =>
+                  navigation.navigate('Pdf', {
+                    uri: 'https://gurugramuniversity.ac.in/Notice/Document%20Fri_Jul_26_16_42_39.pdf',
+                  })
+                }
+              />
+            </View>
           </View>
         </View>
       </View>
@@ -194,5 +209,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 20,
     zIndex: 1,
+  },
+
+  pdf: {
+    flex: 1,
+    width: '100%',
+    height: '80%',
   },
 });

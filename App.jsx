@@ -25,7 +25,7 @@ const AppNavigator = () => {
       <Stack.Screen name="AdminPage" component={AdminPage} />
       <Stack.Screen name="HomeOne" component={MyDrawer} />
       <Stack.Screen name="Dashboard" component={HomeScreen} />
-      <Stack.Screen name="PDF" component={PDFScreen} />
+      <Stack.Screen name="Pdf" component={PDFScreen} />
     </Stack.Navigator>
   );
 };
