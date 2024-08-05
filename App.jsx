@@ -11,6 +11,7 @@ import Header from './src/componetns/Header';
 import MyDrawer from './src/pages/MyDrawer';
 import LogoComponent from './src/pages/LogoComponent';
 import PDFScreen from './src/pages/PDFScreen';
+import MyTab from './src/bottomNav/Home';
 
 const Stack = createNativeStackNavigator();
 
