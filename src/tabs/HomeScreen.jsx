@@ -21,17 +21,17 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {hp, wp} from '../assets/commonCSS/GlobalCss';
 import FontSize from '../assets/commonCSS/FontSize';
-import Categorys from './Categorys';
-import Announcements from './Announcements';
-import ChangePassword from './ChangePassword';
-import FeedbackSuggestion from './FeedbackSuggestion';
-import AboutUs from './AboutUs';
-import ContactUs from './ContactUs';
-import Subscription from './Subscription';
-import Rates from './Rates';
+import Categorys from '../pages/Categorys';
+import Announcements from '../pages/Announcements';
+import ChangePassword from '../pages/ChangePassword';
+import FeedbackSuggestion from '../pages/FeedbackSuggestion';
+import AboutUs from '../pages/AboutUs';
+import ContactUs from '../pages/ContactUs';
+import Subscription from '../pages/Subscription';
+import Rates from '../pages/Rates';
 import {TextInput} from 'react-native-gesture-handler';
-import CategoryCards from './CategroyCards';
-import ResetPassword from './ResetPassword';
+import CategoryCards from '../pages/CategroyCards';
+import ResetPassword from '../pages/ResetPassword';
 
 const Drawer = createDrawerNavigator();
 

@@ -111,18 +111,6 @@ const Announcements = ({navigation}) => {
               notification="(Notification)"
               more="View More >>"
             />
-            <Cards
-              date="15, Jun-2024 04:20 PM"
-              content="ARCA GIIS: Punctuality in Boarding School Buses"
-              notification="(Notification)"
-              more="View More >>"
-            />
-            <Cards
-              date="15, Jun-2024 04:20 PM"
-              content="ARCA GIIS: Punctuality in Boarding School Buses"
-              notification="(Notification)"
-              more="View More >>"
-            />
           </View>
         </ScrollView>
       </ImageBackground>

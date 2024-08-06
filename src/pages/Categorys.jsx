@@ -79,7 +79,7 @@ const DataHere = () => {
               }
             /> */}
 
-            <View
+            {/* <View
               style={{
                 justifyContent: 'center',
                 marginTop: hp(8),
@@ -93,7 +93,7 @@ const DataHere = () => {
                   })
                 }
               />
-            </View>
+            </View> */}
           </View>
         </View>
       </View>

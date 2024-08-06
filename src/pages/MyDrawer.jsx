@@ -6,7 +6,7 @@ import {
 } from '@react-navigation/drawer';
 import {useNavigation} from '@react-navigation/native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import HomeScreen from './HomeScreen';
+import HomeScreen from '../tabs/HomeScreen';
 import ProfileScreen from './ProfileScreen';
 
 const Drawer = createDrawerNavigator();
