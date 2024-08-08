@@ -62,7 +62,7 @@ export default Cards;
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: hp(2), // Add some space between cards
+    marginBottom: hp(2),
   },
   main: {
     elevation: 3,
@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
     padding: hp(1),
     borderRadius: hp(0.5),
     textAlign: 'right',
-    // Removed fixed height
   },
   dateContainer: {
     height: hp(2.5),
