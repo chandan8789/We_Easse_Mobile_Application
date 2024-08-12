@@ -15,49 +15,92 @@ const Tab = createBottomTabNavigator();
 const BottomTabNavigator = () => {
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
-        tabBarIcon: ({color, size}) => {
-          let iconName;
-          let IconComponent = AntDesign;
-
-          switch (route.name) {
-            case 'Home':
-              iconName = 'home';
-              break;
-            case 'Instagram':
-              iconName = 'instagram';
-              break;
-            case 'Facebook':
-              iconName = 'facebook-square';
-              break;
-            case 'WhatsApp':
-              iconName = 'logo-whatsapp';
-              IconComponent = Ionicons;
-              break;
-            case 'Personalize':
-              iconName = 'help';
-              IconComponent = Entypo;
-              break;
-            default:
-              return null;
-          }
-
-          return <IconComponent name={iconName} color={color} size={size} />;
-        },
-        tabBarActiveTintColor: 'blue',
-        tabBarInactiveTintColor: 'gray',
+      screenOptions={{
         tabBarStyle: {
           backgroundColor: 'white',
-          borderTopColor: 'gray',
+          // borderTopColor: '#cccccc',
           borderTopWidth: 0.5,
+          height: hp(8),
         },
         headerShown: false,
-      })}>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Instagram" component={Instagram} />
-      <Tab.Screen name="Facebook" component={Facebook} />
-      <Tab.Screen name="WhatsApp" component={WhatsApp} />
-      <Tab.Screen name="Personalize" component={PersonalizeHelp} />
+        tabBarShowLabel: false,
+      }}>
+      {/* Home Screen */}
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <AntDesign
+              name="home"
+              color={focused ? 'blue' : 'gray'}
+              size={focused ? size + 8 : size}
+            />
+          ),
+          tabBarActiveTintColor: 'blue',
+          tabBarInactiveTintColor: 'gray',
+        }}
+      />
+
+      {/* Instagram Screen */}
+      <Tab.Screen
+        name="Instagram"
+        component={Instagram}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <AntDesign
+              name="instagram"
+              color={focused ? 'purple' : 'gray'}
+              size={focused ? size + 8 : size}
+            />
+          ),
+        }}
+      />
+
+      {/* Facebook Screen */}
+      <Tab.Screen
+        name="Facebook"
+        component={Facebook}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <AntDesign
+              name="facebook-square"
+              color={focused ? '#3b5998' : 'gray'}
+              size={focused ? size + 8 : size}
+            />
+          ),
+        }}
+      />
+
+      {/* WhatsApp Screen */}
+      <Tab.Screen
+        name="WhatsApp"
+        component={WhatsApp}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Ionicons
+              name="logo-whatsapp"
+              color={focused ? '#25D366' : 'gray'}
+              size={focused ? size + 8 : size}
+            />
+          ),
+        }}
+      />
+
+      {/* Personalize Screen */}
+      <Tab.Screen
+        name="Personalize"
+        component={PersonalizeHelp}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Entypo
+              name="help"
+              color={focused ? 'red' : 'gray'}
+              size={focused ? size + 8 : size}
+            />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };

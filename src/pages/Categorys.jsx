@@ -116,6 +116,7 @@ const Categorys = () => {
             fontSize: FontSize.fs18,
             fontWeight: '700',
             paddingLeft: hp(2),
+            color: 'red',
           }}>
           Category ST
         </Text>
@@ -134,6 +135,7 @@ const Categorys = () => {
             fontWeight: '700',
             paddingLeft: hp(2),
             marginTop: hp(2),
+            color: 'red',
           }}>
           Category AT
         </Text>
@@ -152,6 +154,7 @@ const Categorys = () => {
             fontWeight: '700',
             paddingLeft: hp(2),
             marginTop: hp(2),
+            color: 'red',
           }}>
           Category PT
         </Text>
@@ -170,6 +173,7 @@ const Categorys = () => {
             fontWeight: '700',
             paddingLeft: hp(2),
             marginTop: hp(2),
+            color: 'red',
           }}>
           Category FT
         </Text>

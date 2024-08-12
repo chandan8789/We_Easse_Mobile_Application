@@ -6,16 +6,16 @@ import {
   ScrollView,
   ImageBackground,
   TouchableOpacity,
+  Image,
+  TextInput,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
   DrawerItemList,
-  DrawerItem,
 } from '@react-navigation/drawer';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -29,21 +29,17 @@ import AboutUs from '../pages/AboutUs';
 import ContactUs from '../pages/ContactUs';
 import Subscription from '../pages/Subscription';
 import Rates from '../pages/Rates';
-import {TextInput} from 'react-native-gesture-handler';
-import CategoryCards from '../pages/CategroyCards';
 import ResetPassword from '../pages/ResetPassword';
+import logo from '../assets/images/playstore-icon.png';
 
 const Drawer = createDrawerNavigator();
 
 const UserDetails = ({great, name, email}) => {
   return (
-    <View style={{padding: hp(2)}}>
-      <Text style={{color: 'black', fontSize: FontSize.fs18}}>{great}</Text>
-      <Text
-        style={{color: 'blue', fontSize: FontSize.fs24, fontWeight: 'bold'}}>
-        {name}
-      </Text>
-      <Text style={{color: 'black', fontSize: FontSize.fs18}}>{email}</Text>
+    <View style={styles.userDetailsContainer}>
+      <Text style={styles.greetingText}>{great}</Text>
+      <Text style={styles.userName}>{name}</Text>
+      <Text style={styles.emailText}>{email}</Text>
     </View>
   );
 };
@@ -77,6 +73,8 @@ const HomeScreen = ({navigation}) => {
 };
 
 const HomeContent = () => {
+  const [searchVisible, setSearchVisible] = useState(false);
+  const [searchText, setSearchText] = useState('');
   const navigation = useNavigation();
 
   return (
@@ -89,7 +87,24 @@ const HomeContent = () => {
             <FontAwesome name="user-circle" size={30} color="black" />
           </TouchableOpacity>
 
+          <Image source={logo} style={styles.logo} />
+
           <View style={styles.helpContainer}>
+            <View style={styles.searchContainer}>
+              {searchVisible && (
+                <TextInput
+                  style={styles.searchInput}
+                  placeholder="Search..."
+                  placeholderTextColor="black"
+                  value={searchText}
+                  onChangeText={setSearchText}
+                />
+              )}
+              <TouchableOpacity
+                onPress={() => setSearchVisible(!searchVisible)}>
+                <AntDesign name="search1" size={24} color="black" />
+              </TouchableOpacity>
+            </View>
             <TouchableOpacity
               onPress={() => navigation.navigate('Personalized-Help')}>
               <Ionicons name="help-circle-outline" size={30} color="black" />
@@ -111,9 +126,7 @@ const HomeContent = () => {
             name="John Doe"
             email="johndoe@gmail.com"
           />
-          <View>
-            <Categorys />
-          </View>
+          <Categorys />
         </ScrollView>
       </View>
     </ImageBackground>
@@ -137,15 +150,46 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
   },
-  categoryTitle: {
-    color: 'black',
-    paddingLeft: hp(2),
-    fontSize: FontSize.fs18,
-    fontWeight: '500',
+  logo: {
+    height: hp(7),
+    width: wp(15),
+    resizeMode: 'contain',
+    marginLeft: hp(8),
   },
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  searchInput: {
+    height: hp(4.5),
+    borderColor: '#cccccc',
+    paddingHorizontal: hp(1),
+    marginRight: hp(0.5),
+    borderRadius: hp(1),
+    width: wp(25),
+    backgroundColor: 'white',
+    elevation: 2,
+  },
+
   helpContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: hp(2),
+    gap: hp(1),
+  },
+  userDetailsContainer: {
+    padding: hp(2),
+  },
+  greetingText: {
+    color: 'black',
+    fontSize: FontSize.fs18,
+  },
+  userName: {
+    color: 'blue',
+    fontSize: FontSize.fs24,
+    fontWeight: 'bold',
+  },
+  emailText: {
+    color: 'black',
+    fontSize: FontSize.fs18,
   },
 });

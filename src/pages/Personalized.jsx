@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 
 import Header from '../componetns/Header';
@@ -16,50 +16,58 @@ import CInput from '../componetns/Cinput';
 import Images from '../assets/images';
 import FontSize from '../assets/commonCSS/FontSize';
 import {FontFamily} from '../assets/commonCSS/FontFamily';
-import CommonButton from '../componetns/CommonButton';
 import SimpleButton from '../componetns/SimpleButton';
 
 const Personalized = ({navigation}) => {
+  const [mobileNumber, setMobileNumber] = useState('');
+
+  const handleMobileNumberChange = text => {
+    const numericText = text.replace(/[^0-9]/g, '');
+    setMobileNumber(numericText);
+
+    if (numericText.length > 10) {
+      Alert.alert('Error', 'Please enter a 10-digit mobile number');
+    }
+  };
   return (
-    // <LinearGradient
-    //   style={{flex: 1, padding: hp(2)}}
-    //   colors={['#FCBACB', '#FFFFFF', '#42F9F9']}
-    //   end={{x: 0, y: 1}}
-    //   start={{x: 0, y: 0}}>
-    <>
-      <ImageBackground
-        source={require('../assets/images/webg.jpg')}
-        style={styles.background}>
-        <Header navigation={navigation} />
-        <SafeAreaView style={styles.container}>
-          <Text style={styles.pagesName}>Personalized Help</Text>
-          <Text style={styles.filedName}>Email</Text>
-          <CInput
-            title="email-address"
-            fieldsName="Enter Your Email"
-            icon={Images.Lock}
-            textContentType="emailAddress"
-          />
-          <Text style={styles.filedName}>Mobile Number</Text>
-          <CInput
-            fieldsName="Enter Your Mobile Number"
-            icon={Images.Calls}
-            keyboardType="numeric"
-          />
-          <Text style={styles.filedName}>Description (1-500 words)</Text>
-          <TextInput
-            style={styles.textInput}
-            multiline={true}
-            placeholder="Type here..."
-          />
-          <SimpleButton
-            btnTitle="Submit"
-            onPress={() => navigation.navigate('AdminPage')}
-          />
-        </SafeAreaView>
-      </ImageBackground>
-    </>
-    // </LinearGradient>
+    <ImageBackground
+      source={require('../assets/images/webg.jpg')}
+      style={styles.background}>
+      <Header navigation={navigation} />
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.pageName}>Personalized Help</Text>
+
+        <Text style={styles.fieldName}>Email</Text>
+        <CInput
+          title="email-address"
+          fieldsName="Enter Your Email"
+          icon={Images.Lock}
+          textContentType="emailAddress"
+          keyboardType="email-address" // Ensure the keyboard is for email input
+        />
+
+        <Text style={styles.fieldName}>Mobile Number</Text>
+        <CInput
+          fieldsName="Enter Your Mobile Number"
+          icon={Images.Calls}
+          keyboardType="numeric"
+          maxLength={10}
+          onChangeText={handleMobileNumberChange}
+        />
+
+        <Text style={styles.fieldName}>Description (1-500 words)</Text>
+        <TextInput
+          style={styles.textInput}
+          multiline={true}
+          placeholder="Type here..."
+        />
+
+        <SimpleButton
+          btnTitle="Submit"
+          onPress={() => navigation.navigate('AdminPage')}
+        />
+      </SafeAreaView>
+    </ImageBackground>
   );
 };
 
@@ -70,7 +78,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: hp(5),
   },
-  pagesName: {
+  pageName: {
     fontSize: FontSize.fs30,
     marginBottom: hp(1),
     color: 'black',
@@ -81,13 +89,12 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     padding: hp(2),
   },
-  filedName: {
+  fieldName: {
     color: 'black',
     fontSize: FontSize.fs20,
     marginTop: hp(2),
     fontFamily: FontFamily.Tinos,
   },
-
   textInput: {
     height: hp(35),
     borderColor: 'grey',
@@ -95,7 +102,6 @@ const styles = StyleSheet.create({
     padding: hp(1.5),
     textAlignVertical: 'top',
     marginTop: hp(1),
-    borderColor: 'black',
     fontSize: FontSize.fs17,
     backgroundColor: 'white',
     color: 'black',
